@@ -1,9 +1,7 @@
 package pro.sky.homework13tests.service;
 
-import org.springframework.stereotype.Service;
-import pro.sky.homework13tests.service.CalculatorService;
+import pro.sky.homework13tests.exceptions.DivisionByZeroException;
 
-@Service
 public class CalculatorServiceImpl implements CalculatorService {
     @Override
     public int plus(int a, int b) {
@@ -22,6 +20,9 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
     public int divide(int a, int b) {
+        if (b == 0) {
+            throw new DivisionByZeroException();
+        }
         return a / b;
     }
 }
